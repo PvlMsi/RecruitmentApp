@@ -1,0 +1,41 @@
+<% if @user.errors.any? %>
+    <h2>Wskazane błędy uniemożliwiły stworzenie zgłoszenia</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+      <% end %>
+    </ul>
+<% end %>
+
+<%= form_for @user do |form| %>
+    <p>
+      <%= form.label "Nazwa użytkownika:" %>
+      <%= form.text_field :username %>
+    </p>
+    <p>
+      <%= form.label "Hasło:" %>
+      <%= form.password_field :password %>
+    </p>
+    <p>
+      <%= form.label "Imie:" %>
+      <%= form.text_field :firstName %>
+    </p>
+    <p>
+      <%= form.label "Nazwisko:" %>
+      <%= form.text_field :lastName %>
+    </p>
+    <p>
+      <%= form.label "Numer telefonu:" %>
+      <%= form.text_field :phoneNumber %>
+    </p>
+    <p>
+      <%= form.label "E-Mail:" %>
+      <%= form.text_field :email %>
+    </p>
+    <p>
+      <%= form.submit(@user.new_record? ? "Zarejestruj się" : "Edytuj konto") %>
+    </p>
+    <p>
+      <%= link_to "Powrót", applications_path %>
+    </p>
+<% end %>
