@@ -1,0 +1,29 @@
+<% if @application.errors.any? %>
+    <h2>Wskazane błędy uniemożliwiły stworzenie zgłoszenia</h2>
+    <ul>
+      <% @application.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+      <% end %>
+    </ul>
+<% end %>
+
+<%= form_for @application do |form| %>
+    <p>
+      <%= form.label "Aplikuj o:" %>
+      <%= form.text_field :jobType %>
+    </p>
+    <p>
+      <%= form.label "Dział:" %>
+      <%= form.text_field :division %>
+    </p>
+    <p>
+      <%= form.label "Znane technologie:" %>
+      <%= form.text_area :technologies %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+    <p>
+      <%= link_to "Powrót", applications_path %>
+    </p>
+<% end %>

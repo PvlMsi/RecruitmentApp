@@ -1,0 +1,18 @@
+<h1>Lista zgłoszeń</h1>
+<table>
+  <tr>
+    <th>Typ pracy</th>
+    <th>Dział</th>
+    <th>Znane technologie</th>
+  </tr>
+
+  <% @applications.each do |application| %>
+    <tr>
+      <td><%= application.jobType %></td>
+      <td><%= application.division %></td>
+      <td><%= application.technologies %></td>
+      <td><%= link_to 'Zobacz', application_path(application) %></td>
+      <td><%= link_to 'Usuń', application_path(application), method:  :delete, data: {confirm: "Czy jesteś pewny/a?"} %></td>
+    </tr>
+  <% end %>
+</table>
