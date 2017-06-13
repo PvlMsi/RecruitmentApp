@@ -11,6 +11,7 @@ class ApplicationsController < ApplicationController
 
   def create
     @application = Application.new(application_params)
+    @application.user = User.first
     if @application.save
       flash[:notice] = "Zgłoszenie zostało stworzone z powodzeniem"
       redirect_to application_path(@application)
@@ -34,6 +35,6 @@ class ApplicationsController < ApplicationController
       @application = Application.find(params[:id])
     end
     def application_params
-      params.require(:application).permit(:jobType, :division, :technologies)
+      params.require(:application).permit(:jobType, :division, :technologies, :cv, :certificates)
     end
 end

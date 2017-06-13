@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  before_save { self.email = email.downcase }
+  has_many :applications
   validates :username,
             presence: true,
             uniqueness: {case_sensitivie: false},
@@ -22,4 +24,6 @@ class User < ActiveRecord::Base
             presence: true,
             numericality: { only_integer: true},
             length: { is: 9}
+
+  has_secure_password
 end
