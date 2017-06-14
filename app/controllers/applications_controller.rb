@@ -13,7 +13,7 @@ class ApplicationsController < ApplicationController
     @application = Application.new(application_params)
     @application.user = User.first
     if @application.save
-      flash[:notice] = "Zgłoszenie zostało stworzone z powodzeniem"
+      flash[:success] = "Zgłoszenie zostało stworzone z powodzeniem"
       redirect_to application_path(@application)
     else
       render 'new'
@@ -25,7 +25,7 @@ class ApplicationsController < ApplicationController
 
   def destroy
     @application.destroy
-    flash[:notice] = "Zgłoszenie zostało usunięte"
+    flash[:danger] = "Zgłoszenie zostało usunięte"
     redirect_to applications_path
 
   end

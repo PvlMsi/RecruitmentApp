@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :applications
 
-  get 'signup', to: 'users#new'
+  get 'home', to: 'static_pages#home'
   resources :users, except: [:new]
 
   get 'login', to: 'sessions#new'

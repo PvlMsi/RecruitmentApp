@@ -1,10 +1,20 @@
 <% if @application.errors.any? %>
-    <h2>Wskazane błędy uniemożliwiły stworzenie zgłoszenia</h2>
-    <ul>
-      <% @application.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-      <% end %>
-    </ul>
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <div class="panel panel-danger">
+          <div class="panel-heading">
+            <h2 class="panel-title"><%= pluralize(@application.errors.count, "błąd" ) %> uniemożliwiły stworzenie zgłoszenia</h2>
+            <div class="panel-body">
+              <ul>
+                <% @application.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 <% end %>
 
 <%= form_for @application do |form| %>
