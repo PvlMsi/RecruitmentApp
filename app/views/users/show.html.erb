@@ -1,0 +1,5 @@
+<h1>Konto użytkownika <%= @user.username %></h1>
+
+<h2>Zgłoszenia użytkownika <%= @user.username %></h2>
+
+<%= render 'applications/application', object: @user.applications %>

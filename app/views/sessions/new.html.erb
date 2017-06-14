@@ -1,0 +1,18 @@
+<h1>Logowanie</h1>
+
+<%= form_for(:session, url: login_path) do |form| %>
+    <p>
+      <%= form.label "E-Mail:" %>
+      <%= form.email_field :email %>
+    </p>
+    <p>
+      <%= form.label "Hasło:" %>
+      <%= form.password_field :password, autocomplete: "off" %>
+    </p>
+    <p>
+      <%= form.submit "Zaloguj" %>
+    </p>
+    <p>
+      <%= link_to "Powrót", applications_path %>
+    </p>
+<% end %>
