@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id #save user id in cookies
       flash[:success] = "Logowanie zakończone powodzeniem"
-      redirect_to user_path(user)
+      redirect_to root_path
     else
       flash.now[:danger] = "Błędnie wprowadzone dane"
       render 'new'

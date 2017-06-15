@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170613170233) do
+ActiveRecord::Schema.define(version: 20170615150036) do
 
   create_table "applications", force: :cascade do |t|
     t.string  "jobType"
@@ -20,17 +20,28 @@ ActiveRecord::Schema.define(version: 20170613170233) do
     t.string  "cv"
     t.string  "certificates"
     t.integer "user_id"
+    t.boolean "pending"
+    t.boolean "positive",     default: false
+    t.boolean "negative"
+  end
+
+  create_table "available_offerts", force: :cascade do |t|
+    t.string "offerName"
+  end
+
+  create_table "divisions", force: :cascade do |t|
+    t.string "divisionName"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username"
     t.string   "email"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "firstName"
     t.string   "lastName"
     t.string   "phoneNumber"
     t.string   "password_digest"
+    t.boolean  "isAdmin",         default: false
   end
 
 end

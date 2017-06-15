@@ -1,8 +1,30 @@
 class ApplicationsController < ApplicationController
-  before_action :set_application, only: [:show, :destroy]
+  before_action :set_application, only: [:isPending, :isPositive, :isNegative, :show, :destroy]
 
   def index
-    @applications = Application.all
+    if logged_in? && current_user.isAdmin
+      @applications = Application.all
+    else
+      redirect_to root_path
+    end
+  end
+
+  def isPending
+    @application.pending = true;
+    @application.positive = false;
+    @application.negative = false;
+  end
+
+  def isPositive
+    @application.pending = true;
+    @application.positive = false;
+    @application.negative = false;
+  end
+
+  def isNegative
+    @application.pending = false;
+    @application.positive = false;
+    @application.negative = true;
   end
 
   def new

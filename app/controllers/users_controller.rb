@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Witamy w serwisie #{@user.username}"
+      flash[:success] = "Witamy w serwisie #{@user.firstName} #{@user.lastName}"
       redirect_to root_path
     else
       render 'new'
@@ -31,11 +31,15 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = User.all
+    if logged_in? && current_user.isAdmin
+      @user = User.all
+    else
+      redirect_to root_path
+    end
   end
   private
   def user_params
-    params.require(:user).permit(:username, :email, :password, :firstName, :lastName, :phoneNumber)
+    params.require(:user).permit(:firstName, :lastName, :phoneNumber, :email, :password, :password_confirmation)
   end
 
   def set_user

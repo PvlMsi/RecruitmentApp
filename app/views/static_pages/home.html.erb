@@ -1,8 +1,24 @@
 <div class="jumbotron">
-  <div class="container">
-    <h1 align="center">Rekrutacja</h1>
+  <% if logged_in? %>
+      <% if current_user.isAdmin %>
+          <div class="container">
+            <h1 align="center">Strona główna administratora</h1>
 
-    <p align="center" ><%= link_to 'Zaloguj', login_path, class: "btn btn-primary btn-lg", role: "button" %></p>
-  </div>
+            <p align="center" ><%= link_to 'Przeglądaj zgłoszenia', applications_path, class: "btn btn-primary btn-lg", role: "button" %></p>
+            <p align="center" ><%= link_to 'Zarządzaj użytkownikami', users_path, class: "btn btn-primary btn-lg", role: "button" %></p>
+          </div>
+      <% else %>
+        <div class="container">
+          <h1 align="center">Złóż podanie</h1>
 
+          <p align="center" ><%= link_to 'Aplikuj', apply_path, class: "btn btn-primary btn-lg", role: "button" %></p>
+        </div>
+      <% end %>
+  <% else %>
+      <div class="container">
+        <h1 align="center">Strona główna aplikacji rekrutacyjnej</h1>
+
+        <p align="center" ><%= link_to 'Zaloguj', login_path, class: "btn btn-primary btn-lg", role: "button" %></p>
+      </div>
+  <% end %>
 </div>
