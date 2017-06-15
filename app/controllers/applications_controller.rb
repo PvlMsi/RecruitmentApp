@@ -25,7 +25,7 @@ class ApplicationsController < ApplicationController
 
   def destroy
     @application.destroy
-    flash[:danger] = "Zgłoszenie zostało usunięte"
+    flash[:warning] = "Zgłoszenie zostało usunięte"
     redirect_to applications_path
 
   end

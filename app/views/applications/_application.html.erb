@@ -1,22 +1,19 @@
-<table>
-  <tr>
-    <th>Typ pracy</th>
-    <th>Dział</th>
-    <th>Znane technologie</th>
-  </tr>
-
-  <% object.each do |application| %>
-      <tr>
-        <td><%= application.jobType %></td>
-        <td><%= application.division %></td>
-        <td><%= application.technologies %></td>
-        <td><%= application.cv %></td>
-        <td><%= application.certificates %></td>
-        <td><%= link_to 'Zobacz', application_path(application) %></td>
-        <td><%= link_to 'Usuń', application_path(application), method:  :delete, data: {confirm: "Czy jesteś pewny/a?"} %></td>
-        <td><small>Wysłane przez: <%= application.user.firstName if application.user %> <%= application.user.lastName if application.user%>,
+<% object.each do |application| %>
+    <div class="row">
+      <div class="col-xs-10 col-sx-offset-2">
+        <div class="well well-lg">
+          <%= application.jobType %>
+          <%= application.division %>
+          <%= application.technologies %>
+          <%= application.cv %>
+          <%= application.certificates %>
+          <%= link_to 'Zobacz', application_path(application) %>
+          <%= link_to 'Usuń', application_path(application), method:  :delete, data: {confirm: "Czy jesteś pewny/a?"} %>
+          Wysłane przez: <%= application.user.firstName if application.user %> <%= application.user.lastName if application.user%>,
           <%= time_ago_in_words(application.created_at) %>
-        </small></td>
-      </tr>
+        </div>
+      </div>
+    </div>
+
   <% end %>
 </table>

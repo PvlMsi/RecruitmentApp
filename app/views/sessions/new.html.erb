@@ -10,9 +10,7 @@
       <%= form.password_field :password, autocomplete: "off" %>
     </p>
     <p>
-      <%= form.submit "Zaloguj" %>
-    </p>
-    <p>
-      <%= link_to "Powrót", applications_path %>
+      <%= form.submit "Zaloguj", class: "btn btn-default-sm" %>
+      <%= link_to "Powrót", home_path, class: "btn btn-default-sm" %>
     </p>
 <% end %>
