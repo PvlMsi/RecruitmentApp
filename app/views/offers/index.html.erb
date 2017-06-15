@@ -1,0 +1,10 @@
+<div class="col-xs-4 col-xs-offset-4">
+  <ul class="list-group">
+    <% @offer.each do |offer| %>
+        <li class="list-group-item"><%= offer.offerName %></li>
+    <% end %>
+  </ul>
+
+  <%= link_to 'Dodaj oferte', newOffer_path, type:"button", class:"btn btn-primary btn-lg btn-block" %>
+  <%= link_to 'Powrót', settings_path, type:"button", class:"btn btn-default btn-lg btn-block" %>
+</div>

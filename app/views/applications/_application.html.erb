@@ -10,14 +10,13 @@
           Wysłane przez: <%= application.user.firstName if application.user %> <%= application.user.lastName if application.user%>,
           <%= time_ago_in_words(application.created_at) %>
           <p><%= link_to 'Zobacz', application_path(application), class:"btn btn-default" %>
-            <%= link_to 'Do rozpatrzenia', applications_path(application), class:"btn btn-info" %>
-            <%= link_to 'Rozpatrzono pozytywnie', applications_path(application) , class:"btn btn-success" %>
-            <%= link_to 'Rozpatrzono negatywnie', applications_path(application), class:"btn btn-warning" %>
+            <%= link_to 'change', application_path(application), class:"btn btn-info" %>
+            <%= link_to 'Rozpatrzono pozytywnie', application_path(application) , class:"btn btn-success" %>
+            <%= link_to 'Rozpatrzono negatywnie', application_path(application), class:"btn btn-warning" %>
           <%= link_to 'Usuń', application_path(application), method:  :delete, data: {confirm: "Czy jesteś pewny/a?"}, class: "btn btn-danger" %></p>
 
         </div>
       </div>
     </div>
 
-  <% end %>
-</table>
+<% end %>

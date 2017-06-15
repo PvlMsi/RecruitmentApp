@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   resources :applications
+  resources :offers
+  resources :users
 
   root 'static_pages#home'
 
-  resources :users, except: [:new]
+  get 'settings', to: 'static_pages#settings'
+  get 'newOffer', to: 'offers#new'
 
   get 'login', to: 'sessions#new'
   get 'register', to: 'users#new'
@@ -11,7 +14,6 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
 
   get 'apply', to: 'applications#new'
-
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

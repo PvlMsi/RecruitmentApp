@@ -1,6 +1,14 @@
 class ApplicationsController < ApplicationController
-  before_action :set_application, only: [:isPending, :isPositive, :isNegative, :show, :destroy]
+  before_action :set_application, only: [ :changePendingStatus, :show, :destroy]
 
+  helper_method :changePendingStatus
+
+  def changePendingStatus
+    app = Application.find(12)
+    app.positive = true;
+    app.save
+
+  end
   def index
     if logged_in? && current_user.isAdmin
       @applications = Application.all
@@ -9,22 +17,8 @@ class ApplicationsController < ApplicationController
     end
   end
 
-  def isPending
-    @application.pending = true;
-    @application.positive = false;
-    @application.negative = false;
-  end
+  def edit
 
-  def isPositive
-    @application.pending = true;
-    @application.positive = false;
-    @application.negative = false;
-  end
-
-  def isNegative
-    @application.pending = false;
-    @application.positive = false;
-    @application.negative = true;
   end
 
   def new
