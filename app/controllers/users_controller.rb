@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "Witamy w serwisie #{@user.username}"
-      redirect_to applications_path
+      redirect_to root_path
     else
       render 'new'
     end
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:success] = "Twoje konto zostało zedytowane z powodzeniem"
-      redirect_to home_path
+      redirect_to root_path
     else
       render 'edit'
     end

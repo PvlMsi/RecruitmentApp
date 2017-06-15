@@ -11,7 +11,7 @@ class ApplicationsController < ApplicationController
 
   def create
     @application = Application.new(application_params)
-    @application.user = User.first
+    @application.user = current_user
     if @application.save
       flash[:success] = "Zgłoszenie zostało stworzone z powodzeniem"
       redirect_to application_path(@application)
