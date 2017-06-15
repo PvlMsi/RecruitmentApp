@@ -2,11 +2,13 @@ Rails.application.routes.draw do
   resources :applications
   resources :offers
   resources :users
+  resources :divisions
 
   root 'static_pages#home'
 
   get 'settings', to: 'static_pages#settings'
   get 'newOffer', to: 'offers#new'
+  get 'newDivision', to: 'divisions#new'
 
   get 'login', to: 'sessions#new'
   get 'register', to: 'users#new'

@@ -1,0 +1,39 @@
+<% if @division.errors.any? %>
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">
+        <div class="panel panel-danger">
+          <div class="panel-heading">
+            <h2 align="center" class="panel-title"><%= pluralize(@division.errors.count, "błąd" ) %> uniemożliwiły stworzenie zgłoszenia</h2>
+            <div class="panel-body">
+              <ul>
+                <% @division.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>
+
+<div class="row">
+  <div class="col-xd-12">
+    <%= form_for(@division, :html => {class: "form-horizontal", role: "form:"}) do |form| %>
+        <div class="form-group">
+          <div class="col-sm-4 control-label">
+            <%= form.label "Nazwa oferty" %>
+          </div>
+          <div class="col-sm-4">
+            <%= form.text_field :divisionName, class: "form-control" %>
+          </div>
+        </div>
+        <div>
+          <div class="col-sm-offset-5">
+            <%= form.submit class: "btn btn-primary btn-lg active" %>
+            <%= link_to "Powrót", divisions_path, class:"btn btn-default btn-lg active", role:"button" %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

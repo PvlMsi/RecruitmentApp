@@ -1,10 +1,15 @@
-<div class="col-xs-4 col-xs-offset-4">
-  <ul class="list-group">
-    <% @offer.each do |offer| %>
-        <li class="list-group-item"><%= offer.offerName %></li>
-    <% end %>
-  </ul>
+<div class="jumbotron">
+  <div class="container">
+    <div class="col-xs-4 col-xs-offset-4">
+      <h2 align="center">Aktualne oferty</h2>
+      <ul class="list-group">
+        <% @offer.each do |offer| %>
+            <li class="list-group-item"><%= offer.offerName %><%= link_to "x", offer_path(offer), method:  :delete, data: {confirm: "Czy jesteś pewny/a?"}, class:"close" %></li>
+        <% end %>
+      </ul>
 
-  <%= link_to 'Dodaj oferte', newOffer_path, type:"button", class:"btn btn-primary btn-lg btn-block" %>
-  <%= link_to 'Powrót', settings_path, type:"button", class:"btn btn-default btn-lg btn-block" %>
+      <%= link_to 'Dodaj oferte', newOffer_path, type:"button", class:"btn btn-primary btn-lg btn-block" %>
+      <%= link_to 'Powrót', settings_path, type:"button", class:"btn btn-default btn-lg btn-block" %>
+    </div>
+  </div>
 </div>
