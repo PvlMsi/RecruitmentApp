@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
-  get 'home', to: 'static_pages#home'
   resources :users, except: [:new]
 
   get 'login', to: 'sessions#new'
