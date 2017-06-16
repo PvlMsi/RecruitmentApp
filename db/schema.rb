@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170615174529) do
+ActiveRecord::Schema.define(version: 20170616090756) do
 
   create_table "applications", force: :cascade do |t|
     t.string  "jobType"
@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 20170615174529) do
     t.string  "cv"
     t.string  "certificates"
     t.integer "user_id"
-    t.boolean "pending"
+    t.boolean "pending",      default: false
     t.boolean "positive",     default: false
-    t.boolean "negative"
+    t.boolean "negative",     default: false
   end
 
   create_table "available_offerts", force: :cascade do |t|

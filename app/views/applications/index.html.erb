@@ -1,3 +1,71 @@
 <h1 align="center">Lista zgłoszeń</h1>
 
-<%= render 'application', object: @applications %>
+<div class="container-">
+  <table class="table table-striped">
+  <tr>
+    <td>Przesłał/a:</td>
+    <td>Aplikuje o:</td>
+    <td>Dział:</td>
+    <td>Znane technologie:</td>
+    <td>CV:</td>
+    <td>Certfikaty:</td>
+    <td>Akcja:</td>
+  </tr>
+  <% if current_user.isAdmin %>
+      <% @applications.each do |application| %>
+          <% if application.pending == true %>
+              <tr class="info">
+            <% else if application.positive == true %>
+                <tr class="success">
+                <% else if application.negative == true %>
+                    <tr class="danger">
+                <% else %>
+                    <tr>
+                <% end %>
+              <% end %>
+          <% end %>
+            <td><%= application.user.firstName if application.user %> <%= application.user.lastName if application.user%></td>
+            <td><%= application.jobType %></td>
+            <td><%= application.division %></td>
+            <td><%= application.technologies %></td>
+            <td><%= application.cv %></td>
+            <td><%= application.certificates %></td>
+
+                <td><%= link_to 'W trakcie rozpatrywania', change_pending_path(:id => application.id), class:"btn btn-info"  %></td>
+                <td><%= link_to 'Rozpatrzono pozytywnie', change_positive_path(:id => application.id), class:"btn btn-success" %></td>
+                <td><%= link_to 'Rozpatrzono negatywnie', change_negative_path(:id => application.id), class:"btn btn-warning" %></td>
+                <td><%= link_to 'Zobacz', application_path(application), class:"btn btn-default" %></td>
+                <td><%= link_to 'Usuń', application_path(application), method:  :delete, data: {confirm: "Czy jesteś pewny/a?"}, class: "btn btn-danger" %></td>
+
+            </td>
+          </tr>
+      <% end %>
+  <% else %>
+      <% @applications.each do |application| %>
+          <% if application.user == current_user %>
+              <% if application.pending == true %>
+                  <tr class="info">
+              <% else if application.positive == true %>
+                      <tr class="success">
+                  <% else if application.negative == true %>
+                          <tr class="danger">
+                      <% else %>
+                          <tr>
+                      <% end %>
+                  <% end %>
+              <% end %>
+              <td><%= application.user.firstName if application.user %> <%= application.user.lastName if application.user%></td>
+              <td><%= application.jobType %></td>
+              <td><%= application.division %></td>
+              <td><%= application.technologies %></td>
+              <td><%= application.cv %></td>
+              <td><%= application.certificates %></td>
+              <td>
+                <%= link_to 'Zobacz', application_path(application), class:"btn btn-default" %>
+                <%= link_to 'Usuń', application_path(application), method:  :delete, data: {confirm: "Czy jesteś pewny/a?"}, class: "btn btn-danger" %></td>
+              </tr>
+          <% end %>
+      <% end %>
+  <% end %>
+</table>
+</div>

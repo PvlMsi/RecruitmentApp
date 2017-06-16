@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :show]
+  before_action :set_user, only: [:edit, :update, :show, :destroy]
   def new
     @user = User.new
   end
@@ -37,6 +37,13 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def destroy
+    @user.destroy
+    flash[:warning] = "Użytkownik zostało usunięte"
+    redirect_to users_path
+  end
+
   private
   def user_params
     params.require(:user).permit(:firstName, :lastName, :phoneNumber, :email, :password, :password_confirmation)

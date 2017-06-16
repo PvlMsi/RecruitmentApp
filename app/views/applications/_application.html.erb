@@ -1,19 +1,15 @@
-<% object.each do |application| %>
-    <div class="row">
-      <div class="col-xs-8 col-xs-offset-2">
-        <div class="well well-lg">
-          <%= application.jobType %>
-          <%= application.division %>
-          <%= application.technologies %>
-          <%= application.cv %>
-          <%= application.certificates %>
-          Wysłane przez: <%= application.user.firstName if application.user %> <%= application.user.lastName if application.user%>,
-          <%= time_ago_in_words(application.created_at) %>
-          <p><%= link_to 'Zobacz', application_path(application), class:"btn btn-default" %>
-            <%= link_to 'Usuń', application_path(application), method:  :delete, data: {confirm: "Czy jesteś pewny/a?"}, class: "btn btn-danger" %></p>
-
-        </div>
-      </div>
-    </div>
-
-<% end %>
+<tabele class="table table-striped">
+  <tr>
+  <% object.each do |application| %>
+      <tr>
+        <td><%= application.jobType %></td>
+        <td><%= application.division %></td>
+        <td><%= application.technologies %></td>
+        <td><%= application.cv %></td>
+        <td><%= application.certificates %></td>
+        <td><%= application.user.firstName if application.user %> <%= application.user.lastName if application.user%></td>
+        <td><%= link_to 'Zobacz', application_path(application), class:"btn btn-default" %>
+          <%= link_to 'Usuń', application_path(application), method:  :delete, data: {confirm: "Czy jesteś pewny/a?"}, class: "btn btn-danger" %></td>
+      </tr>
+  <% end %>
+</tabele>

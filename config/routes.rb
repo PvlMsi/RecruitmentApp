@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
+  get 'change_pending' => 'applications#change_pending'
+  get 'change_positive' => 'applications#change_positive'
+  get 'change_negative' => 'applications#change_negative'
+
   get 'apply', to: 'applications#new'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

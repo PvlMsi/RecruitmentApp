@@ -1,9 +1,32 @@
 class ApplicationsController < ApplicationController
-  before_action :set_application, only: [ :update, :show, :destroy]
+  before_action :set_application, only: [ :change_pending, :change_positive, :change_negative, :update, :show, :destroy]
 
+  def change_pending
+    @application.pending = true
+    @application.positive = false
+    @application.negative = false
+    @application.save
+    redirect_to applications_path
+  end
+
+  def change_positive
+    @application.pending = false
+    @application.positive = true
+    @application.negative = false
+    @application.save
+    redirect_to applications_path
+  end
+
+  def change_negative
+    @application.pending = false
+    @application.positive = false
+    @application.negative = true
+    @application.save
+    redirect_to applications_path
+  end
 
   def index
-    if logged_in? && current_user.isAdmin
+    if logged_in?
       @applications = Application.all
     else
       redirect_to root_path
@@ -38,6 +61,10 @@ class ApplicationsController < ApplicationController
   end
 
   def show
+    if(current_user.isAdmin == true || @application.user == current_user)
+    else
+      redirect_to root_path
+    end
   end
 
   def destroy
