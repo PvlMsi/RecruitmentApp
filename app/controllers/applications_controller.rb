@@ -44,9 +44,13 @@ class ApplicationsController < ApplicationController
   end
 
   def new
-    @application = Application.new
-    @division = Division.all
-    @offer = Offer.all
+    if(current_user.isAdmin == false)
+      @application = Application.new
+      @division = Division.all
+      @offer = Offer.all
+    else
+      redirect_to root_path
+    end
   end
 
   def create

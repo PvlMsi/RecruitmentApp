@@ -4,4 +4,7 @@ class Application < ActiveRecord::Base
   validates :division, presence: true
   validates :cv, presence: true
   validates :user_id, presence: true
+
+  mount_uploader :cv, CvUploader
+  mount_uploader :certificates, CertificatesUploader
 end
