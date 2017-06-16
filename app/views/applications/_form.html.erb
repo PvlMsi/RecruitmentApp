@@ -25,8 +25,7 @@
             <%= form.label "Aplikuj o:" %>
           </div>
           <div class="col-sm-4">
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            </ul>
+            <%= form.select(:jobType, options_for_select((@offer.each).map { |i| [@offer.find(i).offerName, @offer.find(i).offerName ] })) %>
           </div>
         </div>
         <div class="form-group">
@@ -34,7 +33,7 @@
             <%= form.label "Dział:" %>
           </div>
           <div class="col-sm-4">
-            <%= form.text_field :division, class: "form-control" %>
+            <%= form.select(:division, options_for_select((@division.each).map { |i| [@division.find(i).divisionName, @division.find(i).divisionName ] }))%>
           </div>
         </div>
         <div class="form-group">
@@ -51,7 +50,7 @@
           </div>
           <div class="col-sm-4">
             <%= form.file_field :cv %>
-            <p class="help-block">Załaduj plik PDF ze swoim CV</p>
+            <small class="help-block">Załaduj plik PDF ze swoim CV</small>
           </div>
         </div>
         <div class="form-group">
@@ -60,13 +59,13 @@
           </div>
           <div class="col-sm-4">
             <%= form.file_field :certificates, :multiple => true%>
-            <p class="help-block">Załaduj plik PDF ze swoimi certyfikatami</p>
+            <small class="help-block">Załaduj plik PDF ze swoimi certyfikatami</small>
           </div>
         </div>
         <div class="form-group">
           <div class="col-sm-offset-5">
             <%= form.submit class:"btn btn-primary btn-lg active" %>
-            <%= link_to "Powrót", applications_path, class:"btn btn-default btn-lg active", role:"button" %>
+            <%= link_to "Powrót", root_path, class:"btn btn-default btn-lg active", role:"button" %>
           </div>
         </div>
     <% end %>
