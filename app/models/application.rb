@@ -7,4 +7,5 @@ class Application < ActiveRecord::Base
 
   mount_uploader :cv, CvUploader
   mount_uploader :certificates, CertificatesUploader
+
 end
