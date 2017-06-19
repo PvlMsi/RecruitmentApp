@@ -21,11 +21,11 @@
                 <% end %>
               <% end %>
           <% end %>
-            <td><%= application.user.firstName if application.user %> <%= application.user.lastName if application.user%></td>
-            <td><%= application.jobType %></td>
-            <td><%= application.division %></td>
+            <td class="col-md-1"><%= application.user.firstName if application.user %> <%= application.user.lastName if application.user%></td>
+            <td class="col-md-1"><%= application.jobType %></td>
+            <td class="col-md-2"><%= application.division %></td>
 
-            <td><%= link_to 'Zobacz', application_path(application), class:"btn btn-default" %>
+            <td class="text-center"><%= link_to 'Zobacz', application_path(application), class:"btn btn-default" %>
             <%= link_to 'W trakcie rozpatrywania', change_pending_path(:id => application.id), class:"btn btn-info"  %>
             <%= link_to 'Rozpatrzono pozytywnie', change_positive_path(:id => application.id), class:"btn btn-success" %>
             <%= link_to 'Rozpatrzono negatywnie', change_negative_path(:id => application.id), class:"btn btn-warning" %>

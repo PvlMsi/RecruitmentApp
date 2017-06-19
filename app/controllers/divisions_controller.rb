@@ -38,10 +38,10 @@ class DivisionsController < ApplicationController
   end
 
   private
-  def set_offer
+  def set_division
     @division = Division.find(params[:id])
   end
-  def offer_params
+  def division_params
     params.require(:division).permit(:divisionName)
   end
 end

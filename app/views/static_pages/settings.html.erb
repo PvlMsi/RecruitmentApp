@@ -1,7 +1,7 @@
 <% if logged_in? && current_user.isAdmin %>
   <div class="jumbotron">
     <div class="container">
-      <h2 align="center">Ustawienia kursu:</h2>
+      <h2 align="center">Ustawienia oferty:</h2>
       <div class="col-sm-offset-4 col-sm-4">
         <%= link_to 'Aktualne oferty', offers_path, type:"button", class:"btn btn-primary btn-lg btn-block" %>
         <%= link_to 'Aktualne działy', divisions_path, type:"button", class:"btn btn-primary btn-lg btn-block" %>

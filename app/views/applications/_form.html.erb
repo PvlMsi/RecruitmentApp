@@ -4,7 +4,7 @@
         <div class="panel panel-danger">
           <div class="panel-heading">
             <h2 align="center" class="panel-title">
-              <%= pluralize(@application.errors.count, "błąd" ) %> uniemożliwiły stworzenie zgłoszenia</h2>
+              <%= pluralize(@application.errors.count, "błąd" ) %> uniemożliwił stworzenie zgłoszenia</h2>
             <div class="panel-body">
               <ul>
                 <% @application.errors.full_messages.each do |message| %>
