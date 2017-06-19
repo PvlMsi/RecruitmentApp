@@ -3,7 +3,8 @@
       <div class="col-xs-4 col-xs-offset-4">
         <div class="panel panel-danger">
           <div class="panel-heading">
-            <h2 align="center" class="panel-title"><%= pluralize(@application.errors.count, "błąd" ) %> uniemożliwiły stworzenie zgłoszenia</h2>
+            <h2 align="center" class="panel-title">
+              <%= pluralize(@application.errors.count, "błąd" ) %> uniemożliwiły stworzenie zgłoszenia</h2>
             <div class="panel-body">
               <ul>
                 <% @application.errors.full_messages.each do |message| %>
@@ -33,7 +34,7 @@
             <%= form.label "Dział:" %>
           </div>
           <div class="col-sm-4">
-            <%= form.select(:division, options_for_select((@division.each).map { |i| [@division.find(i).divisionName, @division.find(i).divisionName ] }))%>
+            <%= form.select(:division, options_for_select((@division.each).map { |i| [@division.find(i).divisionName, @division.find(i).divisionName ] })) %>
           </div>
         </div>
         <div class="form-group">

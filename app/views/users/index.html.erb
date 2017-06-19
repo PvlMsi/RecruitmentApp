@@ -4,7 +4,20 @@
     <div class="col-xs-4 col-xs-offset-4">
       <ul class="list-group">
         <% @user.each do |user| %>
-            <li class="list-group-item"><%= user.firstName %> <%= user.lastName %> <%= user.email %><%= link_to "x", user_path(user), method:  :delete, data: {confirm: "Czy jesteś pewny/a?"}, class:"close" %></li>
+            <li class="list-group-item"><%= user.firstName %> <%= user.lastName %> <%= user.email %>
+              <%= link_to user_path(user), method:  :delete, data: {confirm: "Czy jesteś pewny/a że chcesz usunąć tego użytkownika?"}, class:"close" do%>
+                  <span class="glyphicon glyphicon-ban-circle"> </span>
+              <% end %>
+              <% if user.isAdmin %>
+                  <%= link_to make_user_a_normal_user_path(:id => user.id), data: {confirm: "Czy jesteś pewny/a że chcesz nadać temu użytkownikowi prawa administratora?"}, class:"close" do%>
+                      <span class=" glyphicon glyphicon-minus-sign"> </span>
+                  <% end%>
+              <% else %>
+                  <%= link_to make_user_an_admin_path(:id => user.id), data: {confirm: "Czy jesteś pewny/a że chcesz nadać temu użytkownikowi prawa administratora?"}, class:"close" do%>
+                      <span class="glyphicon glyphicon-plus-sign"> </span>
+                  <% end %>
+              <% end %>
+            </li>
         <% end %>
       </ul>
       <%= link_to 'Powrót', root_path, type:"button", class:"btn btn-default btn-lg btn-block" %>

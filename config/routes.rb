@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get 'apply', to: 'applications#new'
 
   get 'certificate_files' => 'applications#certificate_files'
+  get 'make_user_an_admin' => 'users#make_user_an_admin'
+  get 'make_user_a_normal_user' => 'users#make_user_a_normal_user'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

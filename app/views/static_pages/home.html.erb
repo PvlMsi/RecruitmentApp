@@ -8,7 +8,7 @@
                   <%= 'Przeglądaj zgłoszenia' %> <span class="badge"><%= Application.where(pending: false, positive: false, negative: false).count %></span>
               <% end %>
               <%= link_to 'Zarządzaj użytkownikami', users_path, type:"button", class:"btn btn-primary btn-lg btn-block" %>
-              <%= link_to 'Ustawienia rekrutacji', settings_path , type:"button", class:"btn btn-primary btn-lg btn-block" %>
+              <%= link_to 'Ustawienia oferty', settings_path , type:"button", class:"btn btn-primary btn-lg btn-block" %>
             </div>
           </div>
       <% else %>

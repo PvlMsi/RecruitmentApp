@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :show, :destroy]
+  before_action :set_user, only: [:make_user_a_normal_user, :make_user_an_admin, :edit, :update, :show, :destroy]
   def new
     @user = User.new
   end
@@ -41,6 +41,18 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     flash[:warning] = "Użytkownik zostało usunięte"
+    redirect_to users_path
+  end
+
+  def make_user_an_admin
+    @user.isAdmin = true
+    @user.save
+    redirect_to users_path
+  end
+
+  def make_user_a_normal_user
+    @user.isAdmin = false
+    @user.save
     redirect_to users_path
   end
 

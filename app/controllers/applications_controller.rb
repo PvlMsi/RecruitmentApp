@@ -27,7 +27,7 @@ class ApplicationsController < ApplicationController
 
   def index
     if logged_in?
-      @applications = Application.all
+      @applications = Application.all.order(created_at:  :desc)
     else
       redirect_to root_path
     end
@@ -54,6 +54,8 @@ class ApplicationsController < ApplicationController
   end
 
   def create
+    @offer = Offer.all
+    @division = Division.all
     @application = Application.new(application_params)
     @application.user = current_user
     if @application.save

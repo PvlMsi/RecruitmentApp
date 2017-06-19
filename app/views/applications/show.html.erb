@@ -44,6 +44,23 @@
               </div>
             </div>
             <div class="form-group">
+              <div class="col-sm-4 control-label">
+                Status zgłoszenia:
+              </div>
+              <div class="col-sm-4">
+                <% if @application.pending == true %>
+                    W tracie rozpatrywania
+                <% else if @application.positive == true %>
+                        Rozpatrzono pozytywnie
+                    <% else if @application.negative == true %>
+                            Rozpatrzono negatywnie
+                        <% else %>
+                            W oczekiwaniu na rozpatrzenie
+                        <% end %>
+                    <% end %>
+                <% end %>
+            </div>
+            <div class="form-group">
               <div class="col-sm-12 text-center">
                 <%= link_to "Powrót", applications_path, class:"btn btn-default"%>
               </div>
