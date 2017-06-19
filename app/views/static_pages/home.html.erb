@@ -4,9 +4,11 @@
           <div class="container">
             <h2 align="center">Strona główna administratora</h2>
             <div class="col-sm-offset-4 col-sm-4">
-              <%= link_to 'Przeglądaj zgłoszenia', applications_path, type:"button", class:"btn btn-primary btn-lg btn-block" %>
+              <%= link_to 'applications', class: "btn btn-primary btn-lg btn-block" do %>
+                  <%= 'Przeglądaj zgłoszenia' %> <span class="badge"><%= Application.where(pending: false, positive: false, negative: false).count %></span>
+              <% end %>
               <%= link_to 'Zarządzaj użytkownikami', users_path, type:"button", class:"btn btn-primary btn-lg btn-block" %>
-              <%= link_to 'Ustawienia kursu', settings_path , type:"button", class:"btn btn-primary btn-lg btn-block" %>
+              <%= link_to 'Ustawienia rekrutacji', settings_path , type:"button", class:"btn btn-primary btn-lg btn-block" %>
             </div>
           </div>
       <% else %>
