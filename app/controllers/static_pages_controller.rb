@@ -6,4 +6,8 @@ class StaticPagesController < ApplicationController
   def settings
 
   end
+
+  def actual_offer
+
+  end
 end

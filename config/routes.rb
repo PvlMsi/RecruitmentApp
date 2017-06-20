@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
+  get 'actual_offer', to: 'static_pages#actual_offer'
+
   get 'settings', to: 'static_pages#settings'
   get 'newOffer', to: 'offers#new'
   get 'newDivision', to: 'divisions#new'
